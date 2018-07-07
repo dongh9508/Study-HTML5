@@ -148,7 +148,7 @@
 ### 오디오 태그
 
 * `<audio>` -> 오디오 태그, 웹 표준 기술만으로 음악을 재생.
-ex)
+
   
 ```
 <audio 속성="속성값"속성="속성값....>
@@ -170,7 +170,7 @@ ex)
 * src 속성은 재생할 음악 파일의 물리적 파일 경로명을 지정
 * controls 속성은 화면에 제어기(player)를 표시하는 역할을 하며 브라우저마다 제어기 모양이 조금씩 다름.
 * autoplay, loop, controls 속성은 속성명과 속성 기본값이 같아 속성값을 생략하고 속성명만 명세해도 똑같이 동작한다.<br>
-(ex)
+
 ```
 <audio autoplay loop="2"src="audio.mp3"preload="auto"controls> </audio>
 ```
