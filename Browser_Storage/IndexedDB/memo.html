@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> storage test </title>
+<style>
+
+button {
+    background-color: lightGrey;
+    border: 1px solid #636363;
+    box-shadow: 0 1px 3px whiteSmoke inset;
+    text-shadow: 0 1px 0 white, 0 0 4px #EEE;
+    border-radius: 3px;
+    margin: 0;
+}
+
+#menu {
+    background-color: #9B9B9B;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 0px 0 white inset, 0 4px 3px #C7C7C7 inset;
+    border: 1px solid #646464;
+    border-bottom: none;
+    height: 25px;
+    padding: 2px 4px 0px 4px;
+}
+
+#cwt {
+    border: 1px solid #646464;
+    min-height: 200px;
+    padding: 10px;
+    box-shadow: 0 0 10px #EEE inset;
+    border-radius: 0 0 8px 8px; 
+    font-size: 10pt;
+    line-height: 130%;
+    text-shadow: 0 1px 0 white, 0 0px 6px white;
+    background-color: #DDD;
+}
+
+    </style>
+<script>
+
+function getStorage()
+{
+    if(!window.Storage)
+    {
+        console.log('NO STORAGE');
+        return false;
+    }
+
+    return true;
+}
+
+var pref = 'ContentOf';
+
+function save(elem_id)
+{
+    if(getStorage()){
+        var elem = document.getElementById(elem_id);
+        window.localStorage.setItem(pref+elem_id,document.getElementById(elem_id).innerHTML);
+    }
+}
+
+function load(elem_id)
+{
+    if(getStorage()){
+        document.getElementById(elem_id).innerHTML = window.localStorage.getItem(pref+elem_id);
+    }
+
+    console.log('loaded');
+}
+
+function init_eventListners()
+{
+    load('cwt');
+    document.getElementById('cwt').addEventListener('keyup',function(){save('cwt');},false);
+    document.getElementById('btn-reset').addEventListener('click', function(){if(window.confirm('Really?')){document.getElementById('cwt').innerHTML=''; save('cwt');}},false);
+}
+
+document.body.addEventListener('load', init_eventListners, false);
+</script>
+</head>
+<body onload="init_eventListners();">
+    <div id="wrapper">
+        <nav id="menu">
+            <button id="btn-reset">RESET</button>
+        </nav>
+        <div id="cwt" contentEditable="true";">
+        &lt;
+        </div>
+    </div>
+</body>
+</html>

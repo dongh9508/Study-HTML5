@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <input type="text" name = "name" id="input"><br>
+  <textarea id="output"></textarea>
+  <button onclick="input()">입력받기</button>
+  <button onclick="output()">출력하기</button>
+
+
+  
+  
+  <!-- 아래부터 자바스크립트 -->
+  <script type="text/javascript">
+  var temp; 
+  var json;
+  
+  function input(){
+    var input = document.getElementById("input").value;
+    console.log(input);
+    json = { "name" : input }
+    
+    // jsonObj = JSON.parse(json);
+  }
+  
+  function output(){
+  document.getElementById("output").value = json.name;
+  }
+  
+</script>  
+</body>
+</html>
